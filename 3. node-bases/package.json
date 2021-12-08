@@ -5,8 +5,13 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "baseComand" : "node app base=9"
+    "baseComand": "node app base=9"
   },
   "author": "Anibal Rodriguez",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "yargs": "^17.3.0"
+  },
+  "devDependencies": {}
 }

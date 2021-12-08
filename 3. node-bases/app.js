@@ -1,5 +1,5 @@
-
 const { createFile } = require('./helpers/multiply');
+const arv = require('yargs').argv;
 
 //limpiar consola
 console.clear();
