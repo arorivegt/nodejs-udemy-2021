@@ -1,4 +1,5 @@
 const fs = require('fs')
+var colors = require('colors');
 
 //al tener el async ya el metodo defecto envia una promesa
 const createFile = async (base = 5, listar = false) => {
@@ -7,13 +8,13 @@ const createFile = async (base = 5, listar = false) => {
             let salida = '';
         
             for(let i = 1; i <= 10; i++){
-                salida +=`${base} x ${i} = ${base*i} \n`;
+                salida +=`${base} ${'x'.blue} ${i} = ${base*i} \n`;
             }
             if(listar){
-                console.log("=========================");
-                console.log(`     Table ${base}       `);
-                console.log("=========================");
-                console.log(salida);
+                console.log("=========================".red);
+                console.log(`     Table ${colors.blue(base)}       `);
+                console.log("=========================".red);
+                console.log(salida.white);
             }
         
             //sino le especifico el path completo, creara el archivo en la misma carpeta del app.js
