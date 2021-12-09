@@ -20,7 +20,7 @@ const createFile = async (base = 5, listar = false, hasta = 10) => {
             }
         
             //sino le especifico el path completo, creara el archivo en la misma carpeta del app.js
-            fs.writeFileSync(`tabla-${base}.txt`, salida);
+            fs.writeFileSync(`./files/tabla-${base}.txt`, salida);
             return `the table base ${base} has been created`
         }catch( err ) {
             throw err
