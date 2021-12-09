@@ -11,6 +11,13 @@ const argv = require('yargs')
         demandOption:true,
         default: false
     })
+    .option('h',{
+        alias: 'hasta',
+        type: 'number',
+        demandOption:true,
+        describe: "Add this option to give a range to create the table",
+        default: 10
+    })
     .check((argv,option) => {
         if( isNaN(argv.base)){
             throw 'the base is not a number'
