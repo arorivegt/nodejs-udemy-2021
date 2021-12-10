@@ -21,3 +21,12 @@ module.exports = {
     showMenu //name of the function
 }
 ```
+
+## Inquirer 
+En la siguiente clase trabajaremos con el paquete inquirer
+[Inquirer](https://www.npmjs.com/package/inquirer)
+
+Install inquirer
+```sh
+npm install inquirer
+```

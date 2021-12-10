@@ -1,5 +1,5 @@
 require('colors');
-const { showMenu, pause4, pause} = require('./helpers/messages');
+const { inquirerMenu } = require('./helpers/inquire');
 
 const main = async() => {
     console.log('Hola mundo'.red)
@@ -7,9 +7,9 @@ const main = async() => {
     let opt = '';
 
     do {
-        opt = await showMenu();
+        opt = await inquirerMenu();
         console.log({opt});
-         if (opt !== '0') await pause();
+        // if (opt !== '0') await pause();
     }while( opt !== '0')
     
 }
