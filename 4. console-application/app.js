@@ -1,11 +1,17 @@
 require('colors');
 const { inquirerMenu, pause, readInput} = require('./helpers/inquire');
+const { saveData, readData } = require('./helpers/saveFile');
 const Tasks = require('./models/tasks');
 
 const main = async() => {
 
     let opt = '';
     const tasks = new Tasks();
+    const taskData = readData();
+
+    if ( taskData ){
+        tasks.uploadTaskFromArray( taskData );
+    }
 
     do {
         opt = await inquirerMenu();
@@ -15,10 +21,12 @@ const main = async() => {
                 tasks.createTask(description);
             break;
             case '2':
-                console.log(tasks._list_task);
+                tasks.showTasks();
                 break;
 
         }
+
+        saveData(tasks.listTask);
         await pause();
     }while( opt !== '0')
     
