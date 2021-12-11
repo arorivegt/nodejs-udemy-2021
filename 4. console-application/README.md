@@ -23,10 +23,18 @@ module.exports = {
 ```
 
 ## Inquirer 
-En la siguiente clase trabajaremos con el paquete inquirer
+We use the following package to create a dynamic menu
 [Inquirer](https://www.npmjs.com/package/inquirer)
 
 Install inquirer
 ```sh
 npm install inquirer
+```
+
+## UUID
+We use the following package to create unique identifiers
+[UUID](https://www.npmjs.com/package/uuid)
+Install UUID
+```sh
+npm i uuid
 ```
