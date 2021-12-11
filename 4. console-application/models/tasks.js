@@ -44,6 +44,37 @@ class Tasks {
             console.log(` ${ idx } ${ description } :: ${ status }`);
         });
     }
+
+    showPendingOrCompleteTasks ( showComplete = true ){
+        console.log();
+
+        const arrayTasks = this.listTask;
+        let count = 0;
+        arrayTasks.forEach( (task , i) => {
+            const { description, date_complete } = task;
+            const status = ( date_complete ) 
+                                ? 'Complete'.green
+                                : 'Pending'.red;
+            if ( showComplete ){
+                if( date_complete ){
+                    count += 1;
+                    console.log(` ${ count.toString().green } ${ description } :: ${ status }`);
+                }
+            }else{
+                
+                if( !date_complete ){
+                    count += 1;
+                    console.log(` ${ count.toString().green } ${ description } :: ${ status }`);
+                }
+            }
+        });
+    }
+
+    deleteTask ( id = '' ){
+        if ( this._list_task[id] ){
+            delete this._list_task[id];
+        }
+    }
 }
 
 module.exports = Tasks;
