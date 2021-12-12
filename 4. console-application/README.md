@@ -38,3 +38,6 @@ Install UUID
 ```sh
 npm i uuid
 ```
+
+This is the final result
+![console](console.log.png)

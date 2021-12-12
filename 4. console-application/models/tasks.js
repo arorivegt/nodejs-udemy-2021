@@ -53,12 +53,12 @@ class Tasks {
         arrayTasks.forEach( (task , i) => {
             const { description, date_complete } = task;
             const status = ( date_complete ) 
-                                ? 'Complete'.green
+                                ? date_complete.green
                                 : 'Pending'.red;
             if ( showComplete ){
                 if( date_complete ){
                     count += 1;
-                    console.log(` ${ count.toString().green } ${ description } :: ${ status }`);
+                    console.log(` ${ count.toString().green } ${ description.white} :: ${ status }`);
                 }
             }else{
                 
@@ -74,6 +74,22 @@ class Tasks {
         if ( this._list_task[id] ){
             delete this._list_task[id];
         }
+    }
+
+    checkTaskCompleteOrIncomplete ( ids = [] ){
+        ids.forEach( id => {
+
+            const task = this._list_task[id];
+            if( !task.date_complete ){
+                task.date_complete = new Date().toISOString();
+            }
+        })
+
+        this.listTask.forEach( task => {
+            if ( !ids.includes(task.id) ){
+                this._list_task[task.id].date_complete = null;
+            }
+        })
     }
 }
 
