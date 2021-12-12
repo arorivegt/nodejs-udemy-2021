@@ -34,10 +34,12 @@ npm install inquirer
 ## UUID
 We use the following package to create unique identifiers
 [UUID](https://www.npmjs.com/package/uuid)
+
 Install UUID
 ```sh
 npm i uuid
 ```
 
 This is the final result
-![console](console.log.png)
+
+![console](console.png)
