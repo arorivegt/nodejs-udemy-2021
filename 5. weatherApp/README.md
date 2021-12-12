@@ -401,3 +401,7 @@ request of our API Open WeatherMap
 This is my final application
 
 ![console](./readme-img/weather.png)
+
+![console](./readme-img/weather1.png)
+
+![console](./readme-img/weather2.png)
