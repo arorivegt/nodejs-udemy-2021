@@ -68,13 +68,15 @@ const readInput = async ( message ) => {
 }
 
 
-const listTaskDeleted = async ( tasks = [] ) => {
+const listPlaces = async ( places = [] ) => {
 
-    const choices = tasks.map( (task , i) => {
+    const choices = places.map( (place , i) => {
+
         const idx = `${i + 1}.`.green ;
+
         return {
-            value: task.id,
-            name: `${ idx } ${ task.description}`
+            value: place.id,
+            name: `${ idx } ${ place.name }`
         }
     })
 
@@ -87,7 +89,7 @@ const listTaskDeleted = async ( tasks = [] ) => {
         {
             type: 'list',
             name: 'id',
-            message : "Select the task to delete?".white,
+            message : "Select place".white,
             choices // => choices : choices ===> choices
         }
     ]
@@ -143,7 +145,7 @@ module.exports = {
     menu,
     pause,
     readInput,
-    listTaskDeleted,
+    listPlaces,
     confirmDelete,
     showListCheckList
 }

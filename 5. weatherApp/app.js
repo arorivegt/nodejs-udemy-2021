@@ -1,5 +1,10 @@
 require('dotenv').config();
-const { readInput, menu, pause } = require('./helpers/inquire');
+const { 
+        readInput, 
+        menu, 
+        pause,
+        listPlaces 
+      } = require('./helpers/inquire');
 const Search = require('./models/search');
 
 const main = async () => {
@@ -11,12 +16,38 @@ const main = async () => {
         opt = await menu();
         switch (opt){
             case 1:
-                const place = await readInput('City: ');
-                await search.city( place );
-                console.log(place)
+                //show message
+                const searchPlace = await readInput('City: ');
+
+                //search places
+                const places = await search.city( searchPlace );
+
+                //Select the place
+                const id = await listPlaces(places);
+                if (id === '0' ) continue; //continue to another loop
+                const selectPlace = places.find( l => l.id === id );
+
+                search.addHistory( selectPlace.name );
+
+                //get weather
+                const weather = await search.weatherByPlace(selectPlace.lat, selectPlace.lng);
+                 
+                //show results
+                console.log('\n======  Information of the City  ====='.yellow);
+                console.log('City: '.white,selectPlace.name);
+                console.log('Latitude: '.white,selectPlace.lat);
+                console.log('Longitude: '.white,selectPlace.lng);
+                console.log('Weather: '.white,weather.description);
+                console.log('Longitude: '.white,weather.min);
+                console.log('Longitude: '.white,weather.max);
+                console.log('======================================='.yellow);
+
             break;
             case 2:
-                console.log("second option")
+                search.historyCapitalized.forEach ( ( place, i ) => {
+                    const idx = `${i + 1}.`.green ;
+                    console.log( `${ idx } ${ place }`);
+                });
             break;
 
         }
