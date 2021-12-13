@@ -1,26 +1,24 @@
-const http = require('http');
 
-// req => the requirement of the user
-// res => the response of our server to give our user an answer
-http.createServer( ( req, res ) => {
-    console.log(req);
+const express = require('express')
+const app = express()
+const port = 3000;
 
-    //res.writeHead(200,{ 'Content-Type': 'text/json'});
-    res.setHeader('Content-Disposition', 'attachment; filename=lis.csv');
-    res.writeHead(200,{ 'Content-Type': 'teaxt/csv'});
-    
-    /*const person = {
-        id: 1,
-        name : 'Anibal Rodriguez'
-    }
-    res.write(JSON.stringify(person));*/
-
-    res.write('id, name\n');
-    res.write('1, Anibal\n');
-    res.write('2, Jose\n');
-    res.write('3, Rodriguez\n');
-    res.end();
+//serve static content
+app.use( express.static('public'));
+ 
+app.get('/', (req, res)=> {
+  res.send('Home Page')
 })
-.listen( 8080 );
 
-console.log('Listening to port 8080');
+app.get('/hello-world', (req, res) => {
+  res.send('Hello World in another route')
+})
+
+// this is a comodind (*), if user is going to go to another pages, we can show an error or something else
+app.get('*', (req, res)  => {
+  res.sendFile(__dirname + '/public/404.html');
+})
+
+app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`)
+})
