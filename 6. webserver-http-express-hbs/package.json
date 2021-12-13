@@ -1,0 +1,15 @@
+{
+  "name": "6.-webserver-http-express-hbs",
+  "version": "1.0.0",
+  "description": "create package.json  ```sh npm init -y ```",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
