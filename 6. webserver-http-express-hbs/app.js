@@ -3,11 +3,15 @@ const express = require('express')
 const app = express()
 const port = 3000;
 
+app.set('view engine', 'hbs');
+
+
 //serve static content
 app.use( express.static('public'));
  
 app.get('/', (req, res)=> {
-  res.send('Home Page')
+  res.render('home'); //we use hsb to render my webpage
+  //res.sendFile(__dirname + '/public/index.html');
 })
 
 app.get('/hello-world', (req, res) => {
