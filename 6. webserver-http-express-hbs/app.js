@@ -1,16 +1,23 @@
 
 const express = require('express')
+const hbs = require('hbs');
+
 const app = express()
 const port = 3000;
 
+//Handlebars
 app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + '/views/partials', function (err) {});
 
 
 //serve static content
 app.use( express.static('public'));
  
 app.get('/', (req, res)=> {
-  res.render('home'); //we use hsb to render my webpage
+  res.render('home',{
+    title: 'Bootstrap Template - NodeJS',
+    name: 'Anibal J. Rodriguez'
+  }); //we use hsb to render my webpage
   //res.sendFile(__dirname + '/public/index.html');
 })
 
