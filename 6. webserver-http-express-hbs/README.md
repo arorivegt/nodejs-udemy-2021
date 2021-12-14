@@ -53,6 +53,7 @@ If I want to deploy my website made with NodeJS to a hosting, I have many option
 - [Digital Ocean](https://try.digitalocean.com/developerbrand/)
 - [Linode](https://www.linode.com/lp/free-credit-100/?promo=sitelin100&promo_value=100&promo_length=60&utm_source=google&utm_medium=cpc&utm_campaign=11178784753_109179228883&utm_term=g_aud-843709888229:kwd-2629795801_e_linode&utm_content=466940507261&locationid=9077181&device=c_c&gclid=Cj0KCQiAnuGNBhCPARIsACbnLzqJTl6ShFRz8DW8b-aTvMZ6lrQLJ4_gzFUptW-h4f77m5Dm8r6CqbkaAqM3EALw_wcB)
 - [Heroku](https://www.heroku.com/)
+- [Http-server](https://www.npmjs.com/package/http-server) --> this is optional, but whith this with can deploy app with a server in ouur local machine
 
 For this app we're gonna use Heroku and we need to create an account and we can see a button where we can create our app with a unique name like this:
 
@@ -87,7 +88,7 @@ git push heroku master
 
 If I don't know whre is my URL link I can push the button Open App:
 
-![console](./readme-img/Heroku3.png)
+![console](./readme-img/Heroku4.png)
 
 After all that,Heroku say me where is my URL to see my application
 - [NodeJS - Bootstrap](https://arorivegt-nodejs.herokuapp.com/)
