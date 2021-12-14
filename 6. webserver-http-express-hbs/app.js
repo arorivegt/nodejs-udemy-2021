@@ -1,9 +1,10 @@
 
 const express = require('express')
 const hbs = require('hbs');
+require('dotenv').config();
 
 const app = express()
-const port = 3000;
+const port = process.env.PORT; //I need to change this if I want to deployed my app to a hosting for this I use mi .env
 
 //Handlebars
 app.set('view engine', 'hbs');
