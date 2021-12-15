@@ -23,7 +23,7 @@ nodemon app
 
 I install these packages: colors, inquirer, dotenv, axios
 ```javascript
-npm i express hbs doteenv
+npm i express hbs dotenv
 ```
 ## Packages and Tools used and recomended
 - [Express - NPM](https://www.npmjs.com/package/express) -> Framework for Node
