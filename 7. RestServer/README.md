@@ -137,5 +137,17 @@ git push heroku master
 I can use my API REST in heroku
 https://arorivegt-restserver.herokuapp.com/api/users/?q=hola&name=Anibalsss
 
+# POSTMAN
+We can use this functionality when we need to change our URL between development enviroment and production enviroment
+
+![console](./readme-img/postman1.png)
+
+![console](./readme-img/postman2.png)
+
+![console](./readme-img/postman3.png)
+
+![console](./readme-img/postman4.png)
+
+This is my REST-API deployed on Heroku
 
 ![console](./readme-img/final-restapi-heroku.png)
