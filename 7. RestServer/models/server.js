@@ -1,4 +1,6 @@
 const express = require('express')
+const cors = require('cors')
+
 require('dotenv').config();
 
 
@@ -7,6 +9,7 @@ class Server {
     constructor(){
         this.app = express()
         this.port = process.env.PORT;
+        this.pathUsers = '/api/users';
 
         ///Middlewares -> there are a  new funcionality where is execute when we do a request and after the backed do something, 
         //the middlewares do something
@@ -16,52 +19,20 @@ class Server {
     }
 
     middlewares(){
+
+        //CORS
+        this.app.use ( cors() );
+
+        //read and parse body
+        this.app.use( express.json() );
+
         //this is the usual structure for a middleware
         //public directory
         this.app.use( express.static('public') )
     }
 
     routes() {
-        //usually to get something
-        this.app.get('/api', function (req, res) {
-            //res.status(200).json({ add status to return
-            res.json({
-                ok : true,
-                message: "API get"
-            })
-        })
-
-        //usually to update something
-        this.app.put('/api', function (req, res) {
-            res.json({
-                ok : true,
-                message: "put get"
-            })
-        })
-
-        //usually to create something
-        this.app.post('/api', function (req, res) {
-            res.json({
-                ok : true,
-                message: "post get"
-            })
-        })
-
-        ///usually to delete or change status to something
-        this.app.delete('/api', function (req, res) {
-            res.json({
-                ok : true,
-                message: "delete get"
-            })
-        })
-
-
-        this.app.patch('/api', function (req, res) {
-            res.json({
-                ok : true,
-                message: "patch get"
-            })
-        })
+        this.app.use(this.pathUsers, require('../routes/user'));
     }
 
     listen(){
