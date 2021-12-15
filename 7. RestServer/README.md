@@ -106,6 +106,33 @@ If we use Git, we can use this command when we lost something
 ```bash
 git checkout -- .
 ```
+## Upload my Rest in heroku
+
+Install the Heroku CLI
+Download and install the Heroku CLI.
+
+If you haven't already, log in to your Heroku account and follow the prompts to create a new SSH public key.
+```bash
+heroku login
+```
+Create a new Git repository
+Initialize a git repository in a new or existing directory
+```bash
+cd my-project/
+git init
+heroku git:remote -a arorivegt-restserver
+```
+
+Deploy your application
+Commit your code to the repository and deploy it to Heroku using Git.
+```bash
+git add .
+git commit -am "make it better"
+git push heroku master
+```
 
 ## Extension Chrome to view a JSON formatter
 [JSON Viewer](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh/related?hl=es)
+
+I can use my API REST in heroku
+https://arorivegt-restserver.herokuapp.com/api/users/?q=hola&name=Anibalsss
