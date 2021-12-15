@@ -109,7 +109,3 @@ git checkout -- .
 
 ## Extension Chrome to view a JSON formatter
 [JSON Viewer](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh/related?hl=es)
-
-This is my final application
-
-![console](./readme-img/Heroku3.png)
