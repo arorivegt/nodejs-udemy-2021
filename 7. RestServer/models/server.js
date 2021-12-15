@@ -22,8 +22,45 @@ class Server {
     }
 
     routes() {
+        //usually to get something
         this.app.get('/api', function (req, res) {
-            res.send('Hello World')
+            //res.status(200).json({ add status to return
+            res.json({
+                ok : true,
+                message: "API get"
+            })
+        })
+
+        //usually to update something
+        this.app.put('/api', function (req, res) {
+            res.json({
+                ok : true,
+                message: "put get"
+            })
+        })
+
+        //usually to create something
+        this.app.post('/api', function (req, res) {
+            res.json({
+                ok : true,
+                message: "post get"
+            })
+        })
+
+        ///usually to delete or change status to something
+        this.app.delete('/api', function (req, res) {
+            res.json({
+                ok : true,
+                message: "delete get"
+            })
+        })
+
+
+        this.app.patch('/api', function (req, res) {
+            res.json({
+                ok : true,
+                message: "patch get"
+            })
         })
     }
 
