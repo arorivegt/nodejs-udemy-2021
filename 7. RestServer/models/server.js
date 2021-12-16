@@ -1,5 +1,6 @@
 const express = require('express')
-const cors = require('cors')
+const cors = require('cors');
+const { dbConnection } = require('../database/config');
 
 require('dotenv').config();
 
@@ -11,6 +12,9 @@ class Server {
         this.port = process.env.PORT;
         this.pathUsers = '/api/users';
 
+        //connect to database
+        this.connectDataBase();
+
         ///Middlewares -> there are a  new funcionality where is execute when we do a request and after the backed do something, 
         //the middlewares do something
         this.middlewares()
@@ -18,6 +22,12 @@ class Server {
         this.routes();
     }
 
+
+    async connectDataBase(){
+        await dbConnection();
+    }
+
+    
     middlewares(){
 
         //CORS

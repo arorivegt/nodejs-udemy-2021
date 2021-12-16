@@ -30,6 +30,7 @@ npm i express dotenv cors
 - [Express Official Page](http://expressjs.com/)
 - [Dotenv](https://www.npmjs.com/package/dotenv) --> establish my enviroment variable
 - [Cors](https://www.npmjs.com/package/cors) --> CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
+- [Mongoose](https://www.npmjs.com/package/mongoose) -> is a MongoDB object modeling tool designed to work in an asynchronous environment. Mongoose supports both promises and callbacks. 
  
 ![console](./readme-img/cors.png)
 
@@ -130,6 +131,12 @@ git add .
 git commit -am "make it better"
 git push heroku master
 ```
+
+# MongoDB
+Name's Database
+- MyClusterExample
+- mongodb+srv://user_node_example:9ecXtzC4sL6Tezm@myclusterexample.uzsil.mongodb.net/testdb
+- We need to add our IP Address on cloud Mongo Page in Network Access
 
 ## Extension Chrome to view a JSON formatter
 [JSON Viewer](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh/related?hl=es)

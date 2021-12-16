@@ -1,6 +1,7 @@
 const { response, request } = require('express');
+const User = require('../models/user');
 
-const getUsers = (req = request, res = response) => {
+const getUsers =  (req = request, res = response) => {
 
     const { q, name, apiKey = "Key Not Found" } = req.query;
     //res.status(200).json({ add status to return
@@ -12,16 +13,17 @@ const getUsers = (req = request, res = response) => {
     })
 }
 
-const postUsers = (req, res = response) => {
+const postUsers = async (req, res = response) => {
 
-    const { name, City } = req.body;
-    
+    const body = req.body;
+    const user = new User(body);
+
+    //save data in mongo database
+    await user.save();
 
     //res.status(200).json({ add status to return
     res.json({
-        message: "API post => controller",
-        name,
-        City
+        user
     })
 }
 
