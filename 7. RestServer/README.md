@@ -23,7 +23,7 @@ nodemon app
 
 I install these packages: colors, inquirer, dotenv, axios
 ```javascript
-npm i express dotenv cors
+npm i express dotenv cors bcryptjs express-validator
 ```
 ## Packages and Tools used and recomended
 - [Express - NPM](https://www.npmjs.com/package/express) --> Framework for Node
@@ -31,6 +31,8 @@ npm i express dotenv cors
 - [Dotenv](https://www.npmjs.com/package/dotenv) --> establish my enviroment variable
 - [Cors](https://www.npmjs.com/package/cors) --> CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
 - [Mongoose](https://www.npmjs.com/package/mongoose) -> is a MongoDB object modeling tool designed to work in an asynchronous environment. Mongoose supports both promises and callbacks. 
+- [Bcryptjs](https://www.npmjs.com/package/bcrypt) -> Optimized bcrypt in JavaScript with zero dependencies. Compatible to the C++ bcrypt binding on node.js and also working in the browser.
+- [Express-validator](https://www.npmjs.com/package/express-validator)
  
 ![console](./readme-img/cors.png)
 

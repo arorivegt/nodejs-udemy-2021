@@ -1,5 +1,8 @@
 const { response, request } = require('express');
+const bcryptjs = require('bcryptjs');
+
 const User = require('../models/user');
+const { validationResult } = require('express-validator');
 
 const getUsers =  (req = request, res = response) => {
 
@@ -15,8 +18,27 @@ const getUsers =  (req = request, res = response) => {
 
 const postUsers = async (req, res = response) => {
 
-    const body = req.body;
-    const user = new User(body);
+    const errors = validationResult(req);
+    if( !errors.isEmpty()){
+        return res.status(400).json(errors)
+    }
+
+    const { name, email, password, rol } = req.body;
+    const user = new User({ name, email, password, rol });
+
+    //encrypt password
+    //by default I have 10 salt, if a set more the password i more secure but it takes a long time
+    const salt = bcryptjs.genSaltSync();
+    user.password = bcryptjs.hashSync( password , salt );
+
+    // verificar si el cooreo existe
+    const existEmail = await User.findOne({ email });
+
+    if( existEmail ){
+        return res.status(400).json({
+            message: 'The mail is in use'
+        })
+    }
 
     //save data in mongo database
     await user.save();

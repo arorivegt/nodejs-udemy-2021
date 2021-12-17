@@ -8,7 +8,7 @@ const SchemaUser = Schema({
     email: {
         type: String,
         required: [true, 'The email is required'],
-        unique, true
+        unique: true
     },
     password: {
         type: String,
@@ -24,11 +24,11 @@ const SchemaUser = Schema({
     },
     status: {
         type: Boolean,
-        required: true
+        default: true
     },
     authGoogle: {
         type: Boolean,
-        required: true
+        default: false
     }
 })
 
