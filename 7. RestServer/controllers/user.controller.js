@@ -1,8 +1,5 @@
 const { response, request } = require('express');
 const bcryptjs = require('bcryptjs');
-
-const User = require('../models/user');
-
 const getUsers =  (req = request, res = response) => {
 
     const { q, name, apiKey = "Key Not Found" } = req.query;
@@ -25,14 +22,6 @@ const postUsers = async (req, res = response) => {
     const salt = bcryptjs.genSaltSync();
     user.password = bcryptjs.hashSync( password , salt );
 
-    // verificar si el cooreo existe
-    const existEmail = await User.findOne({ email });
-
-    if( existEmail ){
-        return res.status(400).json({
-            message: 'The email is in use'
-        })
-    }
 
     //save data in mongo database
     await user.save();

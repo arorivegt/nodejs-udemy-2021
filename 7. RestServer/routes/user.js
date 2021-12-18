@@ -7,8 +7,8 @@ const {
         deleteUsers, 
         patchUsers 
      } = require('../controllers/user.controller');
+const { isValidRol, existEmail } = require('../helpers/db-validators');
 const { fieldValidator } = require('../middlewares/field-validator');
-const Role = require('../models/role');
 
 const router = Router();
 
@@ -23,13 +23,8 @@ const router = Router();
                 body('name', 'The name is mandatory').not().isEmpty(),
                 body('password', 'The password is mandatory and more thatn six letter').isLength( {min:6} ),
                 body('email', 'The email is not valid').isEmail(),
-                // before -> body('rol', 'Is not a valid rol').isIn(['ADMIN', 'USER']),
-                body('rol').custom( async ( rol = '') => {
-                        const existRol = await Role.findOne( { rol });
-                        if ( !existRol ){
-                                throw new Error(`rol => ${ rol } doesn't exist`)
-                        }
-                }),
+                body('email').custom(  existEmail ), 
+                body('rol').custom(  isValidRol ), // intead of do that (rol) => isValidRol(rol) whe can do this isValidRol because we have only one argument
                 fieldValidator
         ], postUsers)
 

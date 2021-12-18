@@ -30,7 +30,14 @@ const SchemaUser = Schema({
         type: Boolean,
         default: false
     }
-})
+});
+
+//I can rewrite a specific methods
+SchemaUser.methods.toJSON = function() {
+    const { __v, password, ...user } = this.toObject();
+    return user;
+}
+
 
 
 module.exports = model( 'User', SchemaUser );
