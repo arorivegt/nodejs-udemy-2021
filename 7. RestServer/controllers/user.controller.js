@@ -62,17 +62,20 @@ const putUsers = async (req, res = response) => {
     })
 }
 
-const deleteUsers = (req, res = response) => {
-    //res.status(200).json({ add status to return
+const deleteUsers = async (req, res = response) => {
+    const { id } = req.params;
+
+    //const user = await User.findByIdAndDelete( id ); => //this is not recommended because we need to delete the all reference in the database
+    const user = await User.findByIdAndUpdate( id , { status : false } );
     res.json({
-        message: "API delete => controller"
+        user
     })
 }
 
 const patchUsers = (req, res = response) => {
     //res.status(200).json({ add status to return
     res.json({
-        message: "API patch => controller"
+        message: "API patch => controller",
     })
 }
 

@@ -34,7 +34,10 @@ const router = Router();
         ], postUsers)
 
         ///usually to delete or change status to something
-        router.delete('/', deleteUsers)
+        router.delete('/:id',[
+                check('id','is not a valid id').isMongoId(),
+                fieldValidator
+        ], deleteUsers)
 
         ///usually to update someting
         router.patch('/', patchUsers)
