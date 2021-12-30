@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { body  } = require('express-validator')
+const { body, check  } = require('express-validator');
 const { 
         getUsers, 
         putUsers, 
@@ -7,7 +7,7 @@ const {
         deleteUsers, 
         patchUsers 
      } = require('../controllers/user.controller');
-const { isValidRol, existEmail } = require('../helpers/db-validators');
+const { isValidRol, existEmail, existUserByID } = require('../helpers/db-validators');
 const { fieldValidator } = require('../middlewares/field-validator');
 
 const router = Router();
@@ -16,7 +16,12 @@ const router = Router();
         router.get('/', getUsers);
 
         //usually to update something
-        router.put('/:id', putUsers)
+        router.put('/:id',[
+                check('id','is not a valid id').isMongoId(),
+                check('id').custom(  existUserByID ),  
+                body('rol').custom(  isValidRol ), 
+                fieldValidator
+        ], putUsers)
 
         //usually to create something, Here we can define a middleware to validate something
         router.post('/', [

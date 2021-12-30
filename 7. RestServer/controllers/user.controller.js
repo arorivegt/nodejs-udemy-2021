@@ -1,5 +1,7 @@
 const { response, request } = require('express');
 const bcryptjs = require('bcryptjs');
+const User = require('../models/user');
+
 const getUsers =  (req = request, res = response) => {
 
     const { q, name, apiKey = "Key Not Found" } = req.query;
@@ -32,13 +34,22 @@ const postUsers = async (req, res = response) => {
     })
 }
 
-const putUsers = (req, res = response) => {
+const putUsers = async (req, res = response) => {
+    
+    const { id } = req.params;
+    const { _id, password, google, email, ...rest } = req.body;
+    
+    if ( password ){
+        const salt = bcryptjs.genSaltSync();
+        rest.password = bcryptjs.hashSync( password , salt );
+    }
 
-    const id = req.params.id;
+    //.find( { email: 'fernando@gmail.com }).exec( err, data => .... ==> find user by email
+    const userDB = await  User.findByIdAndUpdate( id, rest )
     //res.status(200).json({ add status to return
     res.json({
         message: "API put => controller",
-        id
+        userDB
     })
 }
 
