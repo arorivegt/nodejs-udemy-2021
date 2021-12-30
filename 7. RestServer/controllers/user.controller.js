@@ -2,15 +2,24 @@ const { response, request } = require('express');
 const bcryptjs = require('bcryptjs');
 const User = require('../models/user');
 
-const getUsers =  (req = request, res = response) => {
+const getUsers =  async (req = request, res = response) => {
 
-    const { q, name, apiKey = "Key Not Found" } = req.query;
+    const { limit = 5, until = 0 } = req.query;
+    const query = {status :true};
+
+    console.time('promise-timer');
+    const [ users, total ] = await Promise.all( [
+        User.find( query )
+            .limit( Number(limit) )
+            .skip( Number(until) ),
+        User.countDocuments( query )
+    ] )
+    console.timeEnd('promise-timer');
+
     //res.status(200).json({ add status to return
     res.json({
-        message: "API get => controller",
-        q,
-        name,
-        apiKey
+        users,
+        total
     })
 }
 
@@ -38,7 +47,7 @@ const putUsers = async (req, res = response) => {
     
     const { id } = req.params;
     const { _id, password, google, email, ...rest } = req.body;
-    
+
     if ( password ){
         const salt = bcryptjs.genSaltSync();
         rest.password = bcryptjs.hashSync( password , salt );
