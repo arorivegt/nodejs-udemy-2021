@@ -8,9 +8,7 @@ const {
         patchUsers 
      } = require('../controllers/user.controller');
 const { isValidRol, existEmail, existUserByID } = require('../helpers/db-validators');
-const { validateJWT } = require('../middlewares/field-jwt');
-const { fieldValidator } = require('../middlewares/field-validator');
-const { isAdmin, validRol } = require('../middlewares/validate-role');
+const { validateJWT, isAdmin, validRol, fieldValidator } = require('../middlewares')
 
 const router = Router();
 
