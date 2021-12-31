@@ -163,7 +163,7 @@ This is my REST-API deployed on Heroku
 
 ![console](./readme-img/final-restapi-heroku.png)
 
-How to add the variables .env, first we need to delete the .env in our repository with this
+How to add the variables .env to my Heroku app but first we need to delete the .env in our repository with this
 ```sh
 git rm .env --cached
 ```
@@ -178,7 +178,7 @@ heroku config:set nombre="Anibal" ##add
 heroku config:unset nombre ##delete
 ```
 
-what Do i need to do if I can connect my  database on Heroku
+what i0 need to do if I can't connect my database on Heroku
 ```sh
 1) Deben ingresar a "MongoDB Atlas (desde el navegador).
 2) Una vez que se hayan logueado con sus datos deben ir a su proyecto cargado en MongoDB (la BD de la cafetería).
@@ -197,3 +197,8 @@ function parseJwt (token) {
     return JSON.parse(window.atob(base64));
 };
 ```
+
+### Add Google Sign In 
+- [Documentation](https://developers.google.com/identity/gsi/web/guides/overview)
+- [Create project](https://console.cloud.google.com/apis/credentials?project=nodejs-udemy-2021&supportedpurview=project)
+- [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent?project=nodejs-udemy-2021)
