@@ -20,6 +20,27 @@ const isAdmin = (req, res = response, next) => {
     next();
 }
 
+const validRol = ( ...rols ) => {
+    return (req, res = response, next) => {
+
+        console.log(rols);
+        if ( ! req.user ){
+            return res.status(500).json({
+                msg: 'You need to validate the user'
+            })
+        }
+
+        if ( !rols.includes(req.user.rol)){
+            return res.status(401).json({
+                msg: `${ req.user.name } doesn't have permission`
+            })
+        }
+
+        next();
+    }
+}
+
 module.exports = {
-    isAdmin
+    isAdmin,
+    validRol
 }

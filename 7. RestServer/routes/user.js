@@ -10,7 +10,7 @@ const {
 const { isValidRol, existEmail, existUserByID } = require('../helpers/db-validators');
 const { validateJWT } = require('../middlewares/field-jwt');
 const { fieldValidator } = require('../middlewares/field-validator');
-const { isAdmin } = require('../middlewares/validate-role');
+const { isAdmin, validRol } = require('../middlewares/validate-role');
 
 const router = Router();
 
@@ -39,6 +39,7 @@ const router = Router();
         router.delete('/:id',[
                 validateJWT,
                 isAdmin,
+                validRol('ADMIN','SALES'),
                 check('id','is not a valid id').isMongoId(),
                 fieldValidator
         ], deleteUsers)
