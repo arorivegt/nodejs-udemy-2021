@@ -1,7 +1,8 @@
 const { response } = require("express");
 const jwt = require("jsonwebtoken");
+const User = require('../models/user')
 
-const validateJWT = ( req, res = response, next ) => {
+const validateJWT = async ( req, res = response, next ) => {
 
     const token = req.header("token");
     if ( !token ) {
@@ -13,8 +14,23 @@ const validateJWT = ( req, res = response, next ) => {
     try {
         //With this I can verify is this is a valid token
         const { uid } = jwt.verify( token , process.env.SECRETPRIVATEKEY );
-        console.log(uid);
-        req.uid = uid;
+
+        const user = await User.findById( uid );
+
+        if (!user ){
+            return res.status(401).json({
+                msg: 'User is not valid'
+            })
+        }
+
+        //validate if the user is enable
+        if( !user.status ){
+            return res.status(401).json({
+                msg: 'User is disable'
+            })
+        }
+        req.user = user;
+
         next();
     } catch (err){
         return res.status(401).json({
