@@ -21,9 +21,10 @@ npm install nodemon --save-dev
 nodemon app
 ```
 
-I install these packages: colors, inquirer, dotenv, axios
+I install these packages: express, dotenv, cors, bcryptjs, express validator, google-auth-library
 ```javascript
 npm i express dotenv cors bcryptjs express-validator
+npm install google-auth-library --save
 ```
 ## Packages and Tools used and recomended
 - [Express - NPM](https://www.npmjs.com/package/express) --> Framework for Node
@@ -35,6 +36,7 @@ npm i express dotenv cors bcryptjs express-validator
 - [Express-validator - NPM](https://www.npmjs.com/package/express-validator)
 - [JWT](https://jwt.io/)
 - [JWT - NPM ](https://www.npmjs.com/package/jsonwebtoken)
+- [Google SignIn](https://developers.google.com/identity/gsi/web/guides/verify-google-id-token)
 
 ![console](./readme-img/cors.png)
 
