@@ -28,12 +28,14 @@ npm i express dotenv cors bcryptjs express-validator
 ## Packages and Tools used and recomended
 - [Express - NPM](https://www.npmjs.com/package/express) --> Framework for Node
 - [Express Official Page](http://expressjs.com/)
-- [Dotenv](https://www.npmjs.com/package/dotenv) --> establish my enviroment variable
-- [Cors](https://www.npmjs.com/package/cors) --> CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
-- [Mongoose](https://www.npmjs.com/package/mongoose) -> is a MongoDB object modeling tool designed to work in an asynchronous environment. Mongoose supports both promises and callbacks. 
-- [Bcryptjs](https://www.npmjs.com/package/bcrypt) -> Optimized bcrypt in JavaScript with zero dependencies. Compatible to the C++ bcrypt binding on node.js and also working in the browser.
-- [Express-validator](https://www.npmjs.com/package/express-validator)
- 
+- [Dotenv - NPM](https://www.npmjs.com/package/dotenv) --> establish my enviroment variable
+- [Cors - NPM](https://www.npmjs.com/package/cors) --> CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
+- [Mongoose - NPM](https://www.npmjs.com/package/mongoose) -> is a MongoDB object modeling tool designed to work in an asynchronous environment. Mongoose supports both promises and callbacks. 
+- [Bcryptjs - NPM](https://www.npmjs.com/package/bcrypt) -> Optimized bcrypt in JavaScript with zero dependencies. Compatible to the C++ bcrypt binding on node.js and also working in the browser.
+- [Express-validator - NPM](https://www.npmjs.com/package/express-validator)
+- [JWT](https://jwt.io/)
+- [JWT - NPM ](https://www.npmjs.com/package/jsonwebtoken)
+
 ![console](./readme-img/cors.png)
 
 I can get the data in that way when we send something like this
@@ -185,4 +187,13 @@ what Do i need to do if I can connect my  database on Heroku
 5) Esperan a que Atlas procese la solicitud y se dirigen a Heroku.
 6) Deben resetear la conexión de Heroku al lado del botón que dice "Open App". En el botón que dice "More" -> "Restart all dynos".
 7) Una vez reiniciado el servicio, prueben en Postman sus métodos en fase "Producción" con su URL de Heroku.
+```
+
+If you want to decode the tocken of JWT
+```javascript
+function parseJwt (token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace('-', '+').replace('_', '/');
+    return JSON.parse(window.atob(base64));
+};
 ```
