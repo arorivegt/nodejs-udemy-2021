@@ -64,11 +64,14 @@ const putUsers = async (req, res = response) => {
 
 const deleteUsers = async (req, res = response) => {
     const { id } = req.params;
+    //I get this uid because in field-jwt.js I get this value
+    const uid = req.uid;
 
     //const user = await User.findByIdAndDelete( id ); => //this is not recommended because we need to delete the all reference in the database
     const user = await User.findByIdAndUpdate( id , { status : false } );
     res.json({
-        user
+        user,
+        uid
     })
 }
 
