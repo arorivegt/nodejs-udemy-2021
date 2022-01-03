@@ -29,6 +29,7 @@ const login = async ( req, res = response ) => {
                 msj: 'User or password is not correct - pass'
             })
         }
+        
 
         //Generate JWT
         const token = await createJWT( user.id );
@@ -50,14 +51,40 @@ const googleSignIn = async(req, res = response) => {
     
     console.log(id_token);
     try {
-        const googleUser = await googleVerify(id_token)
-        
+        const { name, email, picture} = await googleVerify(id_token)
+
+        let user = await User.findOne( { email });
+        //I need to create a user because it's not created
+        if ( !user ){ 
+            const data = {
+                name,
+                email,
+                password: ':P',
+                image: picture,
+                authGoogle: true
+            }
+            user = new User(data);
+            await user.save();
+        }
+
+        if( !user.status ){
+            res.status(400).json({
+                msg: 'Talk with your administrator, user is disable',
+            })
+        }
+
+
+        const token = await createJWT( user.id );
+
         res.json({
-            msg: 'OK',
-            id_token
+            user,
+            token
         })
     } catch (error) {
         console.log(error);
+        res.status(400).json({
+            msg: 'Token can\'t be verified',
+        })
     }
 }
 
